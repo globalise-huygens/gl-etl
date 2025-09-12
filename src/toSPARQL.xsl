@@ -7,13 +7,15 @@
     xmlns:sx="java:nl.mpi.tla.saxon"
     xmlns:gl="https://globalise.huygens.knaw.nl/"
     xmlns:functx="http://www.functx.com"
-    exclude-result-prefixes="xs math csv cs sx gl functx" version="3.0">
-
-
-    <xsl:import href="csv2xml.xsl"/>
+    xmlns:util="github.com/knaw-huc/util-server"
+    exclude-result-prefixes="xs math csv cs sx gl functx util" version="3.0">
 
     <xsl:output method="xml" cdata-section-elements="query" encoding="UTF-8"/>
-
+    
+    <xsl:import href="csv2xml.xsl"/>
+    
+    <xsl:include href="utils.xsl"/>
+    
     <xsl:variable name="NL" select="system-property('line.separator')"/>
     <xsl:variable name="TAB" select="'  '"/>
 
@@ -117,7 +119,7 @@
                             <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace((current-group()//field)[1]/@name,'[^a-zA-Z0-9]','_')}> ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;uuid:{unparsed-text('http://util-server:8000/uuid')}>}}{$NL}</xsl:text>
+                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;uuid:{util:uuid()}>}}{$NL}</xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each-group>
@@ -266,7 +268,7 @@
                     <xsl:text expand-text="yes">?var_{replace(concat(var/@ident,'@',var/@group),'[^a-zA-Z0-9]','_')}</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:text expand-text="yes">&lt;uuid:{unparsed-text('http://util-server:8000/uuid')}></xsl:text>
+                    <xsl:text expand-text="yes">&lt;uuid:{util:uuid()}></xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
         </uri>
