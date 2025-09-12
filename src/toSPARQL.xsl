@@ -113,7 +113,7 @@
                             <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{gl:lookup((current-group()//lookup/@ident)[1])}>}}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//md5">
-                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;md5:{(current-group()//md5/@value,replace(current-grouping-key(),'[^a-zA-Z0-9]','_'),current-group()//md5/@ident)[1]}>}}{$NL}</xsl:text>
+                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;md5:{util:md5(normalize-space((current-group()//md5/@value,$row/c[@n=current-group()//md5/@ident])[1]))}>}}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//field">
                             <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace((current-group()//field)[1]/@name,'[^a-zA-Z0-9]','_')}> ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>

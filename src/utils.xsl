@@ -14,7 +14,7 @@
 
     <xsl:function name="util:md5">
         <xsl:param name="value"/>
-        <xsl:sequence select="unparsed-text(concat($util-server,'/md5?value=',encode-for-uri($value)))"/>
+        <xsl:sequence select="unparsed-text(concat($util-server,'/md5?text=',encode-for-uri($value)))"/>
     </xsl:function>    
     
 </xsl:stylesheet>
