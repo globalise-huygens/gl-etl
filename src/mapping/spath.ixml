@@ -1,0 +1,17 @@
+
+     path: (property,entity)+. 
+ property: -arrow,(ident|-uri),-arrow. 
+   entity: ident,var? | 
+           -uri,var?. 
+      uri: @prefix,-":",@suffix. 
+   prefix: ident. 
+   suffix: ident. 
+      var: -"[",ident,-"]". 
+   -arrow: -"-",-">". 
+   @ident: char+. 
+    -char: ["a"-"z"] | 
+           ["A"-"Z"] | 
+           ["0"-"9"] | 
+           "_" | 
+           "-" | 
+           ".". 

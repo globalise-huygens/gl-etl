@@ -1,0 +1,248 @@
+<?xml version="1.0" ?>
+<composite_semantic_pattern>
+    <uri>http://takin.solutions/space/globalise/composite/GLBM.2</uri>
+    <definition>
+        <type>
+            <uri>http://vocab.getty.edu/aat/300456625</uri>
+            <label>Reference Model</label>
+        </type>
+        <identifiers>
+            <identifier>
+                <identifier_content>GLBM.2_Place</identifier_content>
+                <identifier_type>
+                    <uri>http://vocab.getty.edu/aat/300404012</uri>
+                    <label>Unique Identifier</label>
+                </identifier_type>
+            </identifier>
+            <system_identifier>
+                <system_identifier_content>GLBM.2</system_identifier_content>
+                <system_identifier_type>
+                    <uri>http://vocab.getty.edu/aat/300404012</uri>
+                    <label>Unique Identifier</label>
+                </system_identifier_type>
+            </system_identifier>
+        </identifiers>
+        <names>
+            <name>
+                <name_content>Place</name_content>
+                <name_type>
+                    <uri>http://vocab.getty.edu/aat/300456628</uri>
+                    <label>UI_Name</label>
+                </name_type>
+                <name_language>
+                    <uri>http://vocab.getty.edu/aat/300388277</uri>
+                    <label>English</label>
+                </name_language>
+            </name>
+            <system_name>
+                <system_name_content>place</system_name_content>
+                <system_name_type>
+                    <uri>http://vocab.getty.edu/aat/300456630</uri>
+                    <label>System Name</label>
+                </system_name_type>
+            </system_name>
+        </names>
+        <descriptions>
+            <description>
+                <description_content>The place reference data model provides a list of standard fields that are often found present in the general description of a place. Place here is interpreted as a geometric extent used for locating entities relative to a reference space. The scope of entities that this reference model aims to cover are places as typically documented in gazetteers. Examples of places would be Edmonton (the inhabited city), Alberta (the administrative district), Canada (the country). The aim of this reference model is to cover basic descriptors that are typically employed in the documentation of a place, usually by a gazetteer. This reference model aims to remain at a general level description, providing a consolidated, high-level reference data model of most commonly reused descriptors for a place as such and to provide for these, in turn, a set of standard semantic mappings to the CIDOC CRM. Moreover, each field is marked with regards to its potential functionality with regards to instance matching between overlapping datasets. This level of modelling is seen as a necessary basic reference point on which to build more complex documentation. 
+</description_content>
+                <description_type>
+                    <uri>http://vocab.getty.edu/aat/300456631</uri>
+                    <label>Scope Note</label>
+                </description_type>
+                <description_language>
+                    <uri>http://vocab.getty.edu/aat/300388277</uri>
+                    <label>English</label>
+                </description_language>
+            </description>
+        </descriptions>
+    </definition>
+    <ontological_scopes>
+        <ontology_class>
+            <uri>http://www.cidoc-crm.org/cidoc-crm/E53_Place</uri>
+            <label>E53 Place</label>
+        </ontology_class>
+    </ontological_scopes>
+    <semantic_context>
+        <ontologies>
+            <ontology>
+                <ontology_URI>https://ontology.swissartresearch.net/aaao/</ontology_URI>
+                <ontology_prefix>aaao</ontology_prefix>
+                <ontology_name>AAAo</ontology_name>
+                <ontology_version>2.0</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>https://ontology.swissartresearch.net/cpro/</ontology_URI>
+                <ontology_prefix>cpro</ontology_prefix>
+                <ontology_name>cpro</ontology_name>
+                <ontology_version>2.0</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>https://w3id.org/globalise/ontology/</ontology_URI>
+                <ontology_prefix>globo</ontology_prefix>
+                <ontology_name>CRMGlobO</ontology_name>
+                <ontology_version>1.0</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>http://www.ics.forth.gr/isl/CRMgeo/</ontology_URI>
+                <ontology_prefix>crmgeo</ontology_prefix>
+                <ontology_name>CRM Geo</ontology_name>
+                <ontology_version>1.2.1</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>http://www.w3.org/2000/01/rdf-schema#</ontology_URI>
+                <ontology_prefix>rdfs</ontology_prefix>
+                <ontology_name>RDFS</ontology_name>
+                <ontology_version>1.1</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>https://ontology.swissartresearch.net/pwro/</ontology_URI>
+                <ontology_prefix>pwro</ontology_prefix>
+                <ontology_name>CRMPwRO</ontology_name>
+                <ontology_version>1.0</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>http://www.ics.forth.gr/isl/CRMdig/</ontology_URI>
+                <ontology_prefix>crmdig</ontology_prefix>
+                <ontology_name>CRM Digital</ontology_name>
+                <ontology_version>4.0</ontology_version>
+            </ontology>
+            <ontology>
+                <ontology_URI>http://www.cidoc-crm.org/cidoc-crm/</ontology_URI>
+                <ontology_prefix>crm</ontology_prefix>
+                <ontology_name>CIDOC CRM</ontology_name>
+                <ontology_version>7.1.3</ontology_version>
+            </ontology>
+        </ontologies>
+    </semantic_context>
+    <pattern_context>
+        <semantic_pattern_space>
+            <uri>http://takin.solutions/space/globalise/</uri>
+            <name>Globalise_GLBM</name>
+        </semantic_pattern_space>
+    </pattern_context>
+    <provenance>
+        <version_data>
+            <version_number>
+                <version_content/>
+                <version_type>
+                    <uri>http://vocab.getty.edu/aat/300456598</uri>
+                    <label>Version Numbers</label>
+                </version_type>
+            </version_number>
+            <version_publication_date>2024-07-12</version_publication_date>
+            <post_version_modification_date>2025-04-02</post_version_modification_date>
+        </version_data>
+        <creation_data>
+            <creators>
+                <creator>
+                    <uri/>
+                    <label>Rocio Jimenez</label>
+                </creator>
+                <creator>
+                    <uri/>
+                    <label>Matthew Fielding</label>
+                </creator>
+                <creator>
+                    <uri>https://orcid.org/0000-0001-7519-1970</uri>
+                    <label>George Bruseker</label>
+                </creator>
+                <creator>
+                    <uri/>
+                    <label>Veselina Kalkandzhieva</label>
+                </creator>
+                <creator>
+                    <uri/>
+                    <label>Denitsa Nenova</label>
+                </creator>
+            </creators>
+        </creation_data>
+        <funding>
+            <funder>
+                <uri/>
+                <label>KNAW</label>
+            </funder>
+        </funding>
+        <funding_project>
+            <label>Globalise_GLBM</label>
+            <uri>http://takin.solutions/space/globalise/</uri>
+        </funding_project>
+    </provenance>
+    <serialization>
+        <encodings/>
+    </serialization>
+    <composition>
+        <pattern>
+            <pattern_name>Identifier Type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.9</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Name Use Timespan</pattern_name>
+            <pattern_URI>http://takin.solutions/space/srdm_2.0/atomic/SRDF.323</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Name Type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.5</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Statement</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.15</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Place Coordinate</pattern_name>
+            <pattern_URI>http://takin.solutions/space/globalise/atomic/GLBF.1</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Specific Citation Statement</pattern_name>
+            <pattern_URI>http://takin.solutions/space/srdm_2.0/atomic/SRDF.784</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Place Coordinates Statement</pattern_name>
+            <pattern_URI>http://takin.solutions/space/globalise/atomic/GLBF.4</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Identifier</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.10</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.11</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Specific Citation Content</pattern_name>
+            <pattern_URI>http://takin.solutions/space/srdm_2.0/atomic/SRDF.782</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Statement Specific Citation</pattern_name>
+            <pattern_URI>http://takin.solutions/space/srdm_2.0/atomic/SRDF.804</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Meta-type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.12</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Name</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.6</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Place Coordinate Type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/globalise/atomic/GLBF.3</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Specific Citation Type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/srdm_2.0/atomic/SRDF.659</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Part of Location</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.29</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Specific Citation</pattern_name>
+            <pattern_URI>http://takin.solutions/space/srdm_2.0/atomic/SRDF.366</pattern_URI>
+        </pattern>
+        <pattern>
+            <pattern_name>Statement Type</pattern_name>
+            <pattern_URI>http://takin.solutions/space/linked.art/atom/LAF.14</pattern_URI>
+        </pattern>
+    </composition>
+</composite_semantic_pattern>

@@ -1,0 +1,36 @@
+select * 
+where {
+?location a <http://example.globalise.nl/temp/location>;
+   	<http://example.globalise.nl/temp/location/_label> ?_label;
+    <http://example.globalise.nl/temp/location/comments> ?comments;
+    <http://example.globalise.nl/temp/location/coord_certainty> ?coord_certainty;
+    <http://example.globalise.nl/temp/location/glob_id> ?glob_id;
+    <http://example.globalise.nl/temp/location/latitude> ?latitude;
+    <http://example.globalise.nl/temp/location/longitude> ?longitude;
+    <http://example.globalise.nl/temp/location/point> ?point.
+
+OPTIONAL {    
+	?location <http://example.globalise.nl/temp/location/location2coordsource> ?_coordsource.
+	?_coordsource <http://example.globalise.nl/temp/source/page_no> ?coordsource_page_no;
+    	<http://example.globalise.nl/temp/source/zotero_url> ?coordsource_zotero_url.
+        #waar is het commentaar?
+}
+    
+OPTIONAL {
+    ?location <http://example.globalise.nl/temp/location/location2source> ?_source.
+	?_source <http://example.globalise.nl/temp/source/page_no> ?source_page_no;
+    	<http://example.globalise.nl/temp/source/zotero_url> ?source_zotero_url.
+        #waar is het commentaar?
+}
+    
+OPTIONAL {
+    ?_l <http://example.globalise.nl/temp/label/locationlabel> ?location;
+        <http://example.globalise.nl/temp/label/label> ?label;
+        <http://example.globalise.nl/temp/label/type> ?label_type.
+        #een label kan nog een source hebben
+}
+    
+# we missen nog de country (code)
+    # er zijn ook nog relaties tussen locaties (incl. typering)
+
+} limit 100
