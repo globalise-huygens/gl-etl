@@ -10,8 +10,7 @@
     exclude-result-prefixes="xs math csv cs sx gl functx" version="3.0">
 
 
-    <xsl:param name="CSV2XML" select="'https://raw.githubusercontent.com/globalise-huygens/gl-etl-playground/refs/heads/main/csv2xml.xsl?token=GHSAT0AAAAAACZQUKJXI7IYEADJ2FWQUYUW2GECQCA'" static="yes"/>
-    <xsl:import _href="{$CSV2XML}"/>
+    <xsl:import href="csv2xml.xsl"/>
 
     <xsl:output method="xml" cdata-section-elements="query" encoding="UTF-8"/>
 
