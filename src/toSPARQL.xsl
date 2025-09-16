@@ -19,13 +19,11 @@
     <xsl:variable name="NL" select="system-property('line.separator')"/>
     <xsl:variable name="TAB" select="'  '"/>
 
-    <!--<xsl:param name="ns" select="'./Test_XML_Package/SPIFFY/atom/LAF_192.xml'"/>-->
-    <xsl:param name="ns" select="'./data/GLBM_2.xml'"/>
+    <xsl:param name="ns-uri" select="'./data/GLBM_2.xml'"/>
+    <xsl:param name="ns" select="doc($ns-uri)"/>
     
-    <xsl:param name="root">
-        <!--<entity name="person" prefix="crm" suffix="E21_Person"/>-->
-        <entity name="place" prefix="crm" suffix="E53_Place" input="location"/>
-    </xsl:param>
+    <xsl:param name="root-uri"/>
+    <xsl:param name="root" select="doc($root-uri)"/>
     
     <xsl:param name="lookup-uri" select="'./lookup.xml'"/>
     <xsl:param name="lookup-doc" select="doc($lookup-uri)"/>
@@ -80,7 +78,7 @@
         <xsl:variable name="query">
             <query>
                 <xsl:copy-of select="$NL"/>
-                <xsl:for-each select="doc($ns)//ontology">
+                <xsl:for-each select="$ns//ontology">
                     <xsl:if test="normalize-space(ontology_prefix) != '' and normalize-space(ontology_URI) != ''">
                         <xsl:text expand-text="yes">PREFIX {ontology_prefix}: &lt;{ontology_URI}>{$NL}</xsl:text>
                     </xsl:if>
