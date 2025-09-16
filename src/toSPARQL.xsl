@@ -126,7 +126,8 @@
                 <xsl:for-each-group select="$tree//label" group-by="concat(@name,'@',@group)">
                     <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace(current-group()[1]/@name,'[^a-zA-Z0-9]','_')}> ?lbl_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
                 </xsl:for-each-group>
-                <xsl:text expand-text="yes">{$TAB}FILTER(?place = &lt;{normalize-space($row/c[@n=$root/entity/@input])}>){$NL}</xsl:text>
+                <xsl:variable name="pid" select="normalize-space($row/c[@n=$root/entity/@input])"/>
+                <xsl:text expand-text="yes">{$TAB}FILTER(?place = {if (starts-with($pid,'&lt;')) then ('') else('&lt;')}{normalize-space($row/c[@n=$root/entity/@input])}{if (ends-with($pid,'&gt;')) then ('') else('&gt;')}){$NL}</xsl:text>
                 <xsl:text expand-text="yes">}}{$NL}</xsl:text>
             </query>            
         </xsl:variable>
