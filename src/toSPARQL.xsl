@@ -113,7 +113,7 @@
                             <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{gl:lookup((current-group()//lookup/@ident)[1])}>}}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//md5">
-                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;md5:{util:md5(normalize-space((current-group()//md5/@value,$row/c[@n=current-group()//md5/@ident])[1]))}>}}{$NL}</xsl:text>
+                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;md5:{util:md5(normalize-space($row/c[@n=current-group()//md5/@name]))}>}} #md5 for [{current-group()//md5/@name}][{normalize-space($row/c[@n=current-group()//md5/@name])}]{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//field">
                             <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace((current-group()//field)[1]/@name,'[^a-zA-Z0-9]','_')}> ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
@@ -126,7 +126,7 @@
                 <xsl:for-each-group select="$tree//label" group-by="concat(@name,'@',@group)">
                     <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace(current-group()[1]/@name,'[^a-zA-Z0-9]','_')}> ?lbl_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
                 </xsl:for-each-group>
-                <xsl:text expand-text="yes">{$TAB}FILTER(?place = &lt;http://example.globalise.nl/temp/location/0021f4b9-4b37-44d5-9473-098ac370d44d>){$NL}</xsl:text>
+                <xsl:text expand-text="yes">{$TAB}FILTER(?place = &lt;{normalize-space($row/c[@n=$root/entity/@input])}>){$NL}</xsl:text>
                 <xsl:text expand-text="yes">}}{$NL}</xsl:text>
             </query>            
         </xsl:variable>
