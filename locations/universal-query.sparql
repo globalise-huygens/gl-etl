@@ -1,13 +1,20 @@
-sselect *  {
+select distinct ?location  {
 ?location a <http://example.globalise.nl/temp/location>;
    	<http://example.globalise.nl/temp/location/_label> ?_label;
-    <http://example.globalise.nl/temp/location/coord_certainty> ?coord_certainty;
-    <http://example.globalise.nl/temp/location/glob_id> ?glob_id;
-    <http://example.globalise.nl/temp/location/latitude> ?latitude;
-    <http://example.globalise.nl/temp/location/longitude> ?longitude;
-    <http://example.globalise.nl/temp/location/point> ?point.
+    
+OPTIONAL { ?location <http://example.globalise.nl/temp/location/glob_id> ?glob_id. }
+
+OPTIONAL { ?location <http://example.globalise.nl/temp/location/coord_certainty> ?coord_certainty. }
 
 OPTIONAL { ?location <http://example.globalise.nl/temp/location/comments> ?comments. }
+
+OPTIONAL {
+        
+    ?location <http://example.globalise.nl/temp/location/latitude> ?latitude;
+    	<http://example.globalise.nl/temp/location/longitude> ?longitude.
+}
+
+OPTIONAL { ?location <http://example.globalise.nl/temp/location/point> ?point. }
     
 OPTIONAL {
     ?location <http://example.globalise.nl/temp/location/location2coordsource> ?_coordsource.
