@@ -1,4 +1,4 @@
-select distinct ?location  {
+select *  {
 ?location a <http://example.globalise.nl/temp/location>;
    	<http://example.globalise.nl/temp/location/_label> ?_label;
     
@@ -8,8 +8,7 @@ OPTIONAL { ?location <http://example.globalise.nl/temp/location/coord_certainty>
 
 OPTIONAL { ?location <http://example.globalise.nl/temp/location/comments> ?comments. }
 
-OPTIONAL {
-        
+OPTIONAL {        
     ?location <http://example.globalise.nl/temp/location/latitude> ?latitude;
     	<http://example.globalise.nl/temp/location/longitude> ?longitude.
 }
