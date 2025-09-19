@@ -30,6 +30,23 @@
     
     <xsl:param name="out" select="'./'"/>
     
+    <xsl:function name="gl:lookup-switch">
+        <xsl:param name="field"/>
+        <xsl:param name="value"/>
+        <xsl:choose>
+            <xsl:when test="normalize-space(gl:lookup($field))!=''">
+                <xsl:sequence select="gl:lookup($field)"/>
+            </xsl:when>
+            <xsl:when test="normalize-space(gl:lookup-value($field,$value))!=''">
+                <xsl:sequence select="gl:lookup-value($field,$value)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:message expand-text="yes">!ERR: lookup(id/field[{$field}],value[{$value}]) failed!</xsl:message>
+                <xsl:sequence select="'http://ERR-LOOKUP-FAILED'"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+        
     <xsl:function name="gl:lookup">
         <xsl:param name="id"/>
         <xsl:sequence select="$lookup-doc//lookup[@id=$id]/@uri"/>
@@ -109,7 +126,7 @@
                             <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{(current-group()//uri)[1]}>}}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//lookup">
-                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{gl:lookup((current-group()//lookup/@ident)[1])}>}}{$NL}</xsl:text>
+                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{gl:lookup-switch(current-group()//lookup/(@ident,@field),normalize-space($row/c[@n=current-group()//lookup/(@ident,@field)]))}>}}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//md5">
                             <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;md5:{util:md5(normalize-space($row/c[@n=current-group()//md5/@name]))}>}} #md5 for [{current-group()//md5/@name}][{normalize-space($row/c[@n=current-group()//md5/@name])}]{$NL}</xsl:text>
