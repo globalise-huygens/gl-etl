@@ -124,7 +124,7 @@
         <!-- step 7: create the xquery -->
         <xsl:variable name="query">
             <query>
-                <xsl:copy-of select="$NL"/>
+                <xsl:text expand-text="yes">BASE &lt;http://example.globalise.nl/temp/{$root/entity/@input}>{$NL}</xsl:text>
                 <xsl:for-each select="$ns//ontology">
                     <xsl:if test="normalize-space(ontology_prefix) != '' and normalize-space(ontology_URI) != ''">
                         <xsl:text expand-text="yes">PREFIX {ontology_prefix}: &lt;{ontology_URI}>{$NL}</xsl:text>
