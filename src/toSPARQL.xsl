@@ -30,6 +30,36 @@
     
     <xsl:param name="out" select="'./'"/>
     
+    <xsl:function name="gl:is-uri" as="xs:boolean">
+        <xsl:param name="value"/>
+        <xsl:choose>
+            <xsl:when test="starts-with($value,'&lt;')">
+                <xsl:sequence select="true()"/>
+            </xsl:when>
+            <xsl:when test="starts-with($value,'http:')">
+                <xsl:sequence select="true()"/>
+            </xsl:when>
+            <xsl:when test="starts-with($value,'https:')">
+                <xsl:sequence select="true()"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="false()"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="gl:uri-or-md5">
+        <xsl:param name="value"/>
+        <xsl:choose>
+            <xsl:when test="gl:is-uri($value)">
+                <xsl:sequence select="concat('&lt;',$value,'&gt;')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="concat('&lt;md5:',util:md5($value),'&gt;')"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
     <xsl:function name="gl:lookup-switch">
         <xsl:param name="field"/>
         <xsl:param name="value"/>
@@ -118,7 +148,11 @@
                 <xsl:text expand-text="yes">{$TAB}?{$root/entity/@name} rdf:type &lt;http://example.globalise.nl/temp/{$root/entity/@input}> .{$NL}</xsl:text>
                 <xsl:text expand-text="yes">{$TAB}BIND (URI(replace(STR(?{$root/entity/@name}),"http://example.globalise.nl/temp/{$root/entity/@input}/(.*)","https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/{$root/entity/@name}:$1")) AS ?pid){$NL}</xsl:text>
                 <xsl:for-each select="$tree//field">
-                    <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace(@name,'[^a-zA-Z0-9]','_')}> ?fld_{replace(concat(@name,'@',@group),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
+                    <xsl:variable name="type" select="(./@type,parent::*/@type)[normalize-space(.)!=''][contains(.,':')][1]"/>
+                    <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace(@name,'[^a-zA-Z0-9]','_')}> ?fld_{replace(concat(@name,'@',@group),'[^a-zA-Z0-9]','_')}{if (normalize-space($type)!='') then ('_untyped') else ('')} . }}{$NL}</xsl:text>
+                    <xsl:if test="normalize-space($type)!=''">
+                        <xsl:text expand-text="yes">{$TAB}BIND (STRDT(?fld_{replace(concat(@name,'@',@group),'[^a-zA-Z0-9]','_')}_untyped,{$type}) AS ?fld_{replace(concat(@name,'@',@group),'[^a-zA-Z0-9]','_')}){$NL}</xsl:text>
+                    </xsl:if>
                 </xsl:for-each>
                 <xsl:for-each-group select="$tree//var" group-by="concat(@ident,'@',@group)">
                     <xsl:choose>
@@ -129,7 +163,7 @@
                             <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{gl:lookup-switch(current-group()//lookup/(@ident,@field),normalize-space($row/c[@n=current-group()//lookup/(@ident,@field)]))}>}}{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//md5">
-                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;md5:{util:md5(normalize-space($row/c[@n=current-group()//md5/@name]))}>}} #md5 for [{current-group()//md5/@name}][{normalize-space($row/c[@n=current-group()//md5/@name])}]{$NL}</xsl:text>
+                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{{gl:uri-or-md5(normalize-space($row/c[@n=current-group()//md5/@name]))}}} #md5 for [{current-group()//md5/@name}][{normalize-space($row/c[@n=current-group()//md5/@name])}]{$NL}</xsl:text>
                         </xsl:when>
                         <xsl:when test="current-group()//field">
                             <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace((current-group()//field)[1]/@name,'[^a-zA-Z0-9]','_')}> ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
