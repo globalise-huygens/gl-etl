@@ -33,13 +33,13 @@
     <xsl:function name="gl:is-uri" as="xs:boolean">
         <xsl:param name="value"/>
         <xsl:choose>
-            <xsl:when test="starts-with($value,'&lt;')">
+            <xsl:when test="starts-with(normalize-space($value),'&lt;')">
                 <xsl:sequence select="true()"/>
             </xsl:when>
-            <xsl:when test="starts-with($value,'http:')">
+            <xsl:when test="starts-with(normalize-space($value),'http:')">
                 <xsl:sequence select="true()"/>
             </xsl:when>
-            <xsl:when test="starts-with($value,'https:')">
+            <xsl:when test="starts-with(normalize-space($value),'https:')">
                 <xsl:sequence select="true()"/>
             </xsl:when>
             <xsl:otherwise>
@@ -52,7 +52,14 @@
         <xsl:param name="value"/>
         <xsl:choose>
             <xsl:when test="gl:is-uri($value)">
-                <xsl:sequence select="concat('&lt;',$value,'&gt;')"/>
+                <xsl:choose>
+                    <xsl:when test="starts-with(normalize-space($value),'&lt;')">
+                        <xsl:sequence select="$value"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:sequence select="concat('&lt;',$value,'&gt;')"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:sequence select="concat('&lt;md5:',util:md5($value),'&gt;')"/>
