@@ -41,9 +41,15 @@ OPTIONAL {
     	#een label kan nog een source hebben
 }
 
-# we missen nog de country (code)
+    OPTIONAL {
+        ?_lcc <http://example.globalise.nl/temp/location2countrycode/location> ?location;
+        	 <http://example.globalise.nl/temp/location2countrycode/countrycode> ?_cc.
+        ?_cc <http://example.globalise.nl/temp/countrycode/countrycode> ?countrycode;
+        	 <http://example.globalise.nl/temp/countrycode/country> ?country.
+    }
+
 # er zijn ook nog relaties tussen locaties (incl. typering)
 
-#FILTER(?location=<http://example.globalise.nl/temp/location/0021f4b9-4b37-44d5-9473-098ac370d44d>)
+#FILTER(?location=<http://example.globalise.nl/temp/location/d84a012d-9feb-424c-ab09-e93084e2be3a>)
 }
-#limit 100    
+#limit 100   
