@@ -34,7 +34,7 @@ OPTIONAL {
 OPTIONAL {
 	?_ll <http://example.globalise.nl/temp/locationlabel/location> ?location;
         <http://example.globalise.nl/temp/locationlabel/label> ?_l.
-        #er kan ook een timezone zijn
+        #er kan ook een timespan zijn
 	?_l	<http://example.globalise.nl/temp/label/label> ?label;
     	<http://example.globalise.nl/temp/label/type> ?label_type.
   OPTIONAL { ?_l <http://example.globalise.nl/temp/label/comments> ?label_comments. }
@@ -47,9 +47,14 @@ OPTIONAL {
         ?_cc <http://example.globalise.nl/temp/countrycode/countrycode> ?countrycode;
         	 <http://example.globalise.nl/temp/countrycode/country> ?country.
     }
-
-# er zijn ook nog relaties tussen locaties (incl. typering)
-
+    
+    OPTIONAL {
+        ?lpof <http://example.globalise.nl/temp/locationpartof/child_location> ?location;
+        	<http://example.globalise.nl/temp/locationpartof/parent_location> ?related;
+        	<http://example.globalise.nl/temp/locationpartof/locationpartof> ?related_type.
+    }
+    
+#FILTER(?location=<http://example.globalise.nl/temp/location/0021f4b9-4b37-44d5-9473-098ac370d44d>)
 #FILTER(?location=<http://example.globalise.nl/temp/location/d84a012d-9feb-424c-ab09-e93084e2be3a>)
 }
 #limit 100   

@@ -3,7 +3,7 @@
     <lookup id="glob_id" uri="lookedup:glob_id"/>
     <!--<lookup id="amd_id" uri="lookedup:amd_id"/>-->
     <!--<lookup id="wgh_id" uri="lookedup:wgh_id"/>-->
-    <lookup id="country" uri="lookedup:country"/>
+    <lookup id="country" uri="skos:related"/>
     <!--<lookup id="esta_id" uri="lookedup:esta_id"/>-->
     <lookup id="certainty" uri="lookedup:certainty"/>
     <lookup field="coord_certainty" value="certain" uri="lookedup:certain"/>
