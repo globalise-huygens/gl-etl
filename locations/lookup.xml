@@ -8,7 +8,11 @@
     <lookup id="certainty" uri="lookedup:certainty"/>
     <lookup field="coord_certainty" value="certain" uri="lookedup:certain"/>
     <lookup field="coord_certainty" value="uncertain" uri="lookedup:uncertain"/>
-    <lookup field="label_type"  value="PREF" uri="http://vocab.getty.edu/aat/300404670"/>
-    <lookup field="label_type"  value="ALT" uri="http://vocab.getty.edu/aat/300264273"/>
-    <lookup field="label_type"  value="HIDDEN" uri="http://vocab.getty.edu/aat/300449151"/>
+    <lookup field="label_type"      value="PREF" uri="http://vocab.getty.edu/aat/300404670"/>
+    <lookup field="label_type"      value="ALT" uri="http://vocab.getty.edu/aat/300264273"/>
+    <lookup field="label_type"      value="HIDDEN" uri="http://vocab.getty.edu/aat/300449151"/>
+    <lookup field="related_type"    value="WITHIN" uri="crm:P89_falls_within"/>
+    <lookup field="related_type"    value="OVERLAPS" uri="crm:P121_overlaps_with"/>
+    <lookup field="related_type"    value="BORDERS" uri="crm:P122_borders_with"/>
+    <lookup field="related_type"    value="APPROXBY" uri="crm:P189i_is_approximated_by "/>
 </lookups>
