@@ -1,0 +1,35 @@
+SELECT *  {
+?polity a <http://example.globalise.nl/temp/polity>;
+        <http://example.globalise.nl/temp/polity/_label> ?_label.
+
+  OPTIONAL {
+	?_pl <http://example.globalise.nl/temp/politylabel/polity> ?polity;
+        <http://example.globalise.nl/temp/politylabel/label> ?_l.
+	?_l <http://example.globalise.nl/temp/label/label> ?label;
+    	<http://example.globalise.nl/temp/label/type> ?label_type.
+        OPTIONAL { ?_l <http://example.globalise.nl/temp/label/comments> ?label_comments. }
+        OPTIONAL {
+          ?_ls <http://example.globalise.nl/temp/label2source/label> ?_l ;
+               <http://example.globalise.nl/temp/label2source/source> ?label_source.
+	      ?label_source <http://example.globalise.nl/temp/source/page_no> ?label_source_page_no;
+                        <http://example.globalise.nl/temp/source/zotero_url> ?label_source_zotero_url.
+                        OPTIONAL { ?label_source <http://example.globalise.nl/temp/source/comments> ?label_source_comments. }
+        } #label
+        OPTIONAL {
+          ?_pl <http://example.globalise.nl/temp/politylabel/timespan> ?_lt.
+               OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_earliest_begin> ?label_timespan_earliest_begin . }
+               OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_earliest_end> ?label_timespan_earliest_end .}
+               OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_latest_begin> ?label_timespan_latest_begin .}
+               OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_latest_end> ?label_timespan_latest_end .}
+               OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/comments> ?label_timespan_comments . }
+
+               OPTIONAL {
+               ?_ts  <http://example.globalise.nl/temp/timespan2source/timespan> ?_lt ;
+    	    	     <http://example.globalise.nl/temp/timespan2source/source> ?_lts.
+	           ?l_lts <http://example.globalise.nl/temp/source/page_no> ?label_timespan_source_page_no;
+    	              <http://example.globalise.nl/temp/source/zotero_url> ?label_timespan_source_zotero_url.
+                      OPTIONAL { ?label_source <http://example.globalise.nl/temp/source/comments> ?label_timespan_source_comments. }
+               } # label timespan source
+        } #label timespan
+    } #label
+}
