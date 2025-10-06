@@ -1151,6 +1151,52 @@
                 </ontological_path>
                 <Expected_Value_Type>String</Expected_Value_Type>
             </path>
+            <path nr="3" field="LAF.14_statement_type" value="http://vocab.getty.edu/aat/300435415"
+                type="">
+                <ontological_path cols="1">
+                    <path xml:id="GLBMAP.138_label.r22.p3" field="label" type="Concept">
+                        <entity name="place" prefix="crm" suffix="E53_Place" input="location">
+                            <property src="GLBMAP.138_label.r22.p1" prefix="aaao"
+                                suffix="ZP5i_is_appellative_subject_of">
+                                <entity src="GLBMAP.138_label.r22.p1" prefix="aaao"
+                                    suffix="ZE2_Appellative_Status">
+                                    <var src="GLBMAP.138_label.r22.p1" ident="SRDF.518_1"
+                                        group="label"/>
+                                    <property src="GLBMAP.138_label.r22.p1" prefix="aaao"
+                                        suffix="ZP6_ascribes_appellation">
+                                        <entity src="GLBMAP.138_label.r22.p1" prefix="crm"
+                                            suffix="E33_E41_Linguistic_Appellation">
+                                            <var src="GLBMAP.138_label.r22.p1" ident="SRDF.524_1"
+                                                group="label"/>
+                                            <property src="GLBMAP.138_label.r22.p3" prefix="crm"
+                                                suffix="P1_is_identified_by">
+                                                <entity src="GLBMAP.138_label.r22.p3" prefix="crm"
+                                                  suffix="E33_E41_Linguistic_Appellation">
+                                                  <var src="GLBMAP.138_label.r22.p3" ident="4_1"
+                                                  group="label"/>
+                                                  <property src="GLBMAP.138_label.r22.p3"
+                                                  prefix="crm" suffix="P2_has_type">
+                                                  <entity src="GLBMAP.138_label.r22.p3" prefix="crm"
+                                                  suffix="E55_Type">
+                                                  <var src="GLBMAP.138_label.r22.p3" ident="430_1"
+                                                  group="label">
+                                                  <concept>
+                                                  <uri>http://vocab.getty.edu/aat/300435415</uri>
+                                                  </concept>
+                                                  </var>
+                                                  </entity>
+                                                  </property>
+                                                </entity>
+                                            </property>
+                                        </entity>
+                                    </property>
+                                </entity>
+                            </property>
+                        </entity>
+                    </path>
+                </ontological_path>
+                <Expected_Value_Type>Concept</Expected_Value_Type>
+            </path>
         </field>
         <field xml:id="GLBMAP.136_alt_pref" name="label_type" group="label" class="crm:E53 Place"
             row="23">
