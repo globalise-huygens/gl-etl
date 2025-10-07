@@ -153,7 +153,7 @@
                 <xsl:text expand-text="yes">}}{$NL}</xsl:text>
                 <xsl:text expand-text="yes">WHERE {{{$NL}</xsl:text>
                 <xsl:text expand-text="yes">{$TAB}?{$root/entity/@name} rdf:type &lt;http://example.globalise.nl/temp/{$root/entity/@input}> .{$NL}</xsl:text>
-                <xsl:text expand-text="yes">{$TAB}BIND (URI(replace(STR(?{$root/entity/@name}),"http://example.globalise.nl/temp/{$root/entity/@input}/(.*)","https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/{$root/entity/@name}:$1")) AS ?pid){$NL}</xsl:text>
+                <!--<xsl:text expand-text="yes">{$TAB}BIND (URI(replace(STR(?{$root/entity/@name}),"http://example.globalise.nl/temp/{$root/entity/@input}/(.*)","https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/{$root/entity/@name}:$1")) AS ?pid){$NL}</xsl:text>-->
                 <xsl:for-each select="$tree//field">
                     <xsl:variable name="type" select="(./@type,parent::*/@type)[normalize-space(.)!=''][contains(.,':')][1]"/>
                     <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace(@name,'[^a-zA-Z0-9]','_')}> ?fld_{replace(concat(@name,'@',@group),'[^a-zA-Z0-9]','_')}{if (normalize-space($type)!='') then ('_untyped') else ('')} . }}{$NL}</xsl:text>
@@ -270,8 +270,8 @@
                     <xsl:sequence select="concat('var_',replace(concat(var/@ident,'@',var/@group),'[^a-zA-Z0-9]','_'))"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <!--<xsl:sequence select="$root/entity/@name"/>-->
-                    <xsl:sequence select="'pid'"></xsl:sequence>
+                    <xsl:sequence select="$root/entity/@name"/>
+                    <!--<xsl:sequence select="'pid'"></xsl:sequence>-->
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>

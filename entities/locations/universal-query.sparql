@@ -1,22 +1,24 @@
 SELECT *  {
-?location a <http://example.globalise.nl/temp/location>;
+?loc a <http://example.globalise.nl/temp/location>;
    	<http://example.globalise.nl/temp/location/_label> ?_label.
+BIND (URI(replace(STR(?loc),"http://example.globalise.nl/temp/location/(.*)","https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/place:$1")) AS ?location)
+
     
-OPTIONAL { ?location <http://example.globalise.nl/temp/location/glob_id> ?glob_id. }
+OPTIONAL { ?loc <http://example.globalise.nl/temp/location/glob_id> ?glob_id. }
 
-OPTIONAL { ?location <http://example.globalise.nl/temp/location/coord_certainty> ?coord_certainty. }
+OPTIONAL { ?loc <http://example.globalise.nl/temp/location/coord_certainty> ?coord_certainty. }
 
-OPTIONAL { ?location <http://example.globalise.nl/temp/location/comments> ?comments. }
+OPTIONAL { ?loc <http://example.globalise.nl/temp/location/comments> ?comments. }
 
 OPTIONAL {        
-    ?location <http://example.globalise.nl/temp/location/latitude> ?latitude;
+    ?loc <http://example.globalise.nl/temp/location/latitude> ?latitude;
     	<http://example.globalise.nl/temp/location/longitude> ?longitude.
 }
 
-OPTIONAL { ?location <http://example.globalise.nl/temp/location/point> ?point. }
+OPTIONAL { ?loc <http://example.globalise.nl/temp/location/point> ?point. }
     
 OPTIONAL {
-    ?_cs <http://example.globalise.nl/temp/location2coordsource/location> ?location;
+    ?_cs <http://example.globalise.nl/temp/location2coordsource/location> ?loc;
     	<http://example.globalise.nl/temp/location2coordsource/source> ?_coordsource.
 	?_coordsource <http://example.globalise.nl/temp/source/page_no> ?coordsource_page_no;
     	<http://example.globalise.nl/temp/source/zotero_url> ?coordsource_zotero_url.
@@ -24,7 +26,7 @@ OPTIONAL {
 }
 
 OPTIONAL {
-	?_ls <http://example.globalise.nl/temp/location2source/location> ?location;
+	?_ls <http://example.globalise.nl/temp/location2source/location> ?loc;
     	<http://example.globalise.nl/temp/location2source/source> ?_source.
 	?_source <http://example.globalise.nl/temp/source/page_no> ?source_page_no;
     	<http://example.globalise.nl/temp/source/zotero_url> ?source_zotero_url.
@@ -32,7 +34,7 @@ OPTIONAL {
 }
 
 OPTIONAL {
-	?_ll <http://example.globalise.nl/temp/locationlabel/location> ?location;
+	?_ll <http://example.globalise.nl/temp/locationlabel/location> ?loc;
         <http://example.globalise.nl/temp/locationlabel/label> ?_l.
         #er kan ook een timespan zijn
 	?_l	<http://example.globalise.nl/temp/label/label> ?label;
@@ -42,19 +44,20 @@ OPTIONAL {
 }
 
     OPTIONAL {
-        ?_lcc <http://example.globalise.nl/temp/location2countrycode/location> ?location;
+        ?_lcc <http://example.globalise.nl/temp/location2countrycode/location> ?loc;
         	 <http://example.globalise.nl/temp/location2countrycode/countrycode> ?_cc.
         ?_cc <http://example.globalise.nl/temp/countrycode/countrycode> ?countrycode;
         	 <http://example.globalise.nl/temp/countrycode/country> ?country.
     }
     
     OPTIONAL {
-        ?lpof <http://example.globalise.nl/temp/locationpartof/child_location> ?location;
-        	<http://example.globalise.nl/temp/locationpartof/parent_location> ?related;
+        ?lpof <http://example.globalise.nl/temp/locationpartof/child_location> ?loc;
+        	<http://example.globalise.nl/temp/locationpartof/parent_location> ?rel;
         	<http://example.globalise.nl/temp/locationpartof/locationpartof> ?related_type.
+        	BIND (URI(replace(STR(?rel),"http://example.globalise.nl/temp/location/(.*)","https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/place:$1")) AS ?related)
     }
     
-#FILTER(?location=<http://example.globalise.nl/temp/location/0021f4b9-4b37-44d5-9473-098ac370d44d>)
-#FILTER(?location=<http://example.globalise.nl/temp/location/d84a012d-9feb-424c-ab09-e93084e2be3a>)
+#FILTER(?loc=<http://example.globalise.nl/temp/location/fff802bd-bb40-466b-9c72-10d8c437912f>)
+#FILTER(?loc=<http://example.globalise.nl/temp/location/d84a012d-9feb-424c-ab09-e93084e2be3a>)
 }
 #limit 100   
