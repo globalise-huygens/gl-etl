@@ -55,14 +55,20 @@ BIND (URI(replace(STR(?pol),"http://example.globalise.nl/temp/polity/(.*)","http
   OPTIONAL { ?pol <http://example.globalise.nl/temp/polity/comments> ?comments }
     
   # polity source
+    
+  # polity timespan
   
   # polity reign
     
   # polity reign source
     
+  # polity reign timespan
+    
   # polity reign ruler
 
-  # polity reign ruler (gender) source
+  # polity reign ruler
+
+  # polity reign ruler life/timespan
     
   # polity reign ruler source
     
@@ -75,6 +81,8 @@ BIND (URI(replace(STR(?pol),"http://example.globalise.nl/temp/polity/(.*)","http
   # polity reign rulership type
     
   # polity reign rulership source
+    
+  # polity reign rulership timespan
 
   # polity reign rulership label
     
