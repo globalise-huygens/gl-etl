@@ -1,21 +1,22 @@
 SELECT *  {
-?polity a <http://example.globalise.nl/temp/polity>;
+?pol a <http://example.globalise.nl/temp/polity>;
         <http://example.globalise.nl/temp/polity/_label> ?_label.
+BIND (URI(replace(STR(?pol),"http://example.globalise.nl/temp/polity/(.*)","https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/polity:$1")) AS ?polity)
 
-  OPTIONAL { # label
-	?_pl <http://example.globalise.nl/temp/politylabel/polity> ?polity;
+  OPTIONAL { # polity label
+	?_pl <http://example.globalise.nl/temp/politylabel/polity> ?pol;
         <http://example.globalise.nl/temp/politylabel/label> ?_l.
 	?_l <http://example.globalise.nl/temp/label/label> ?label;
     	<http://example.globalise.nl/temp/label/type> ?label_type.
         OPTIONAL { ?_l <http://example.globalise.nl/temp/label/comments> ?label_comments. }
-        OPTIONAL { # label source
+        OPTIONAL { # polity label source
           ?_ls <http://example.globalise.nl/temp/label2source/label> ?_l ;
                <http://example.globalise.nl/temp/label2source/source> ?label_source.
 	      ?label_source <http://example.globalise.nl/temp/source/page_no> ?label_source_page_no;
                         <http://example.globalise.nl/temp/source/zotero_url> ?label_source_zotero_url.
                         OPTIONAL { ?label_source <http://example.globalise.nl/temp/source/comments> ?label_source_comments. }
-        } # label source
-        OPTIONAL { # label timespan
+        } # polity label source
+        OPTIONAL { # polity label timespan
           ?_pl <http://example.globalise.nl/temp/politylabel/timespan> ?_lt.
                OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_earliest_begin> ?label_timespan_earliest_begin . }
                OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_earliest_end> ?label_timespan_earliest_end .}
@@ -23,15 +24,15 @@ SELECT *  {
                OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/year_latest_end> ?label_timespan_latest_end .}
                OPTIONAL { ?_lt <http://example.globalise.nl/temp/timespan/comments> ?label_timespan_comments . }
 
-               OPTIONAL { # label timespan source
+               OPTIONAL { # polity label timespan source
                ?_ts  <http://example.globalise.nl/temp/timespan2source/timespan> ?_lt ;
     	    	     <http://example.globalise.nl/temp/timespan2source/source> ?_lts.
 	           ?_lts <http://example.globalise.nl/temp/source/page_no> ?label_timespan_source_page_no;
     	              <http://example.globalise.nl/temp/source/zotero_url> ?label_timespan_source_zotero_url.
                       OPTIONAL { ?_lts <http://example.globalise.nl/temp/source/comments> ?label_timespan_source_comments. }
-               } # label timespan source
-        } # label timespan
-    } # label
+               } # polity label timespan source
+        } # polity label timespan
+    } # polity label
   OPTIONAL { 
     ?_pl <http://example.globalise.nl/temp/polity/timespan> ?_pts.
          OPTIONAL { ?_pts <http://example.globalise.nl/temp/timespan/year_earliest_begin> ?timespan_earliest_begin . }
@@ -48,4 +49,36 @@ SELECT *  {
                   OPTIONAL { ?label_source <http://example.globalise.nl/temp/source/comments> ?timespan_source_comments. }
          } # polity timespan source
   } # polity timespan
+    
+  OPTIONAL { ?pol <http://example.globalise.nl/temp/polity/wikidata_ID> ?wikidata_ID }
+  OPTIONAL { ?pol <http://example.globalise.nl/temp/polity/other_external_link> ?other_external_link }
+  OPTIONAL { ?pol <http://example.globalise.nl/temp/polity/comments> ?comments }
+    
+  # polity source
+  
+  # polity reign
+    
+  # polity reign source
+    
+  # polity reign ruler
+
+  # polity reign ruler (gender) source
+    
+  # polity reign ruler source
+    
+  # polity reign ruler label
+    
+  # polity reign ruler label *
+    
+  # polity reign rulership
+    
+  # polity reign rulership type
+    
+  # polity reign rulership source
+
+  # polity reign rulership label
+    
+  # polity reign rulership label *
+
+  # polity reign successor
 }
