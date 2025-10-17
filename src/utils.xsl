@@ -9,7 +9,15 @@
     <xsl:param name="util-server" select="'http://util-server:8000'"/>
     
     <xsl:function name="util:uuid">
-        <xsl:sequence select="unparsed-text(concat($util-server,'/uuid'))"/>
+        <xsl:param name="key"/>
+        <xsl:choose>
+            <xsl:when test="normalize-space($key)!=''">
+                <xsl:sequence select="unparsed-text(concat($util-server,'/uuid?key=',encode-for-uri($key)))"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:sequence select="unparsed-text(concat($util-server,'/uuid'))"/>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
 
     <xsl:function name="util:md5">

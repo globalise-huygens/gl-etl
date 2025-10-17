@@ -30,6 +30,18 @@
     
     <xsl:param name="out" select="'./'"/>
     
+    <xsl:function name="gl:memoized-uuid">
+        <xsl:param name="row"/>
+        <xsl:param name="key"/>
+        <xsl:param name="var"/>
+        <xsl:variable name="memo">
+            <xsl:text expand-text="yes">{$var}@{replace(normalize-space($row/c[@n=replace($key,'^\?','')]),'^.*[/:]([0-9a-f\-]+)$','$1')}</xsl:text>
+        </xsl:variable>
+        <xsl:variable name="uuid" select="util:uuid($memo)"/>
+        <xsl:message expand-text="yes">?DBG: uuid memo[{$memo}] uuid[{$uuid}]</xsl:message>
+        <xsl:sequence select="$uuid"/>
+    </xsl:function>
+    
     <xsl:function name="gl:is-uri" as="xs:boolean">
         <xsl:param name="value"/>
         <xsl:choose>
@@ -184,7 +196,7 @@
                             </xsl:choose>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;uuid:{util:uuid()}>}}{$NL}</xsl:text>
+                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;uuid:{gl:memoized-uuid($row,current-group()[1]/@key,concat('var_',replace(current-grouping-key(),'[^a-zA-Z0-9]','_')))}>}}{$NL}</xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each-group>
@@ -223,12 +235,12 @@
         <xsl:param name="grp" tunnel="yes"/>
         <entity srcs="{string-join(distinct-values($grp/@src),' ')}" prefix="{@prefix}" suffix="{@suffix}">
             <xsl:for-each-group select="$grp/var" group-by="concat(@ident,'@',@group)">
-                <var srcs="{string-join(distinct-values($grp/@src),' ')}" group="{current-group()[1]/@group}" ident="{current-group()[1]/@ident}">
+                <var srcs="{string-join(distinct-values($grp/@src),' ')}" group="{current-group()[1]/@group}" ident="{current-group()[1]/@ident}" key="{current-group()[1]/ancestor::*/@key}">
                     <xsl:copy-of select="current-group()/*"/>
                 </var>
             </xsl:for-each-group>
             <xsl:for-each-group select="$grp/field" group-by="concat(@name,'@',@group)">
-                <field srcs="{string-join(distinct-values($grp/@src),' ')}" group="{current-group()[1]/@group}" name="{current-group()[1]/@name}">
+                <field srcs="{string-join(distinct-values($grp/@src),' ')}" group="{current-group()[1]/@group}" name="{current-group()[1]/@name}" key="{current-group()[1]/ancestor::*/@key}">
                     <xsl:copy-of select="current-group()/*"/>
                 </field>
             </xsl:for-each-group>
@@ -335,7 +347,7 @@
                     <xsl:text expand-text="yes">?var_{replace(concat(var/@ident,'@',var/@group),'[^a-zA-Z0-9]','_')}</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:text expand-text="yes">&lt;uuid:{util:uuid()}></xsl:text>
+                    <xsl:text expand-text="yes">&lt;uuid:{util:uuid('')}></xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
         </uri>
