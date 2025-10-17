@@ -28,6 +28,7 @@
                 <xsl:variable name="r" select="."/>
                 <field xml:id="{normalize-space($r/c[@n='ID'])}"
                     name="{normalize-space($r/c[@n='Field_Name'])}"
+                    key="{normalize-space($r/c[@n='memo_key'])}"
                     group="{if (normalize-space($r/c[@n='field_group'])!='') then (normalize-space($r/c[@n='field_group'])) else (generate-id($r))}"
                     class="crm:{normalize-space($r/c[@n='CRM Class'])}" row="{$r/@l}" xsl:expand-text="yes">
                     <data_sample>{normalize-space($r/c[@n='Data_Sample'])}</data_sample>
