@@ -76,7 +76,7 @@ BIND (URI(replace(STR(?loc),"http://example.globalise.nl/temp/location/(.*)","ht
       OPTIONAL { ?_source <http://example.globalise.nl/temp/source/comments> ?type_source_comments. }      
     } # location type source
   } # location type
-  BIND (COALESCE(?lt,<http:example.com/place>) AS ?location_type)
+  BIND (COALESCE(?lt,<http://example.com/place>) AS ?location_type)
     
 #FILTER(?loc=<http://example.globalise.nl/temp/location/fff802bd-bb40-466b-9c72-10d8c437912f>)
 #FILTER(?loc=<http://example.globalise.nl/temp/location/d84a012d-9feb-424c-ab09-e93084e2be3a>)
