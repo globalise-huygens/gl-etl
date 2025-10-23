@@ -65,8 +65,8 @@ BIND (URI(replace(STR(?loc),"http://example.globalise.nl/temp/location/(.*)","ht
   
   OPTIONAL { # location type
     ?_lt <http://example.globalise.nl/temp/location2type/location> ?loc;
-         <http://example.globalise.nl/temp/location2type/location2type> ?lt;
-         <http://example.globalise.nl/temp/location2type/comments> ?type_comments.
+         <http://example.globalise.nl/temp/location2type/location2type> ?lt.
+        OPTIONAL { ?lt <http://example.globalise.nl/temp/location2type/comments> ?type_comments. }
          #er kan ook een timespan zijn
     OPTIONAL { # location type source
       ?lt <http://example.globalise.nl/temp/locationtype2source/source> ?_lts.
