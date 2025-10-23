@@ -62,23 +62,23 @@
   "identified_by": {
     "@embed": "@always",
     "@type": ["Name", "Identifier"],
-    "content": {"@omitDefault": True}
+    "content": {"@omitDefault": true}
   },
   "referred_to_by": {
     "@embed": "@always",
-    "@omitDefault": True,
+    "@omitDefault": true,
     "@type": "LinguisticObject",
     "classified_as": {},
-    "content": {"@omitDefault": True}
+    "content": {"@omitDefault": true}
   },
   "http://www.ics.forth.gr/isl/CRMgeo/Q11i_is_approximated_by": {
     "@embed": "@always",
     "@type": "http://www.ics.forth.gr/isl/CRMgeo/SP6_Declarative_Place",
     "http://www.ics.forth.gr/isl/CRMgeo/Q10_defined_by": {
       "@embed": "@always",
-      "@omitDefault": True,
+      "@omitDefault": true,
       "@type": "http://www.ics.forth.gr/isl/CRMgeo/SP5_Geometric_Place_Expression",
-      "content": {"@omitDefault": True}
+      "content": {"@omitDefault": true}
     }
   },
   "https://ontology.swissartresearch.net/aaao/ZP5i_is_appellative_subject_of": {
@@ -99,7 +99,7 @@
     "@type": "https://ontology.swissartresearch.net/aaao/ZE4_Classificatory_Status",
     "https://ontology.swissartresearch.net/aaao/ZP12_ascribes_classification": {
       "@embed": "@always",
-      "@omitDefault": True,
+      "@omitDefault": true,
       "@type": "Type"
     },
     "referred_to_by": {
@@ -109,7 +109,7 @@
   },
   "https://ontology.swissartresearch.net/aaao/ZP85i_is_topographical_subject_of": {
     "@embed": "@always",
-    "@omitDefault": True,
+    "@omitDefault": true,
     "@type": "https://ontology.swissartresearch.net/aaao/ZE44_Topographical_Status",
     "classified_as": {},
     "https://ontology.swissartresearch.net/aaao/ZP77_ascribes_place": {
