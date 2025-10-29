@@ -188,7 +188,14 @@
                             <xsl:variable name="val" select="normalize-space($row/c[@n=current-group()//field/(@ident,@field,@name)])"/>
                             <xsl:choose>
                                 <xsl:when test="gl:is-uri($val)">
-                                    <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{$val}&gt;}}{$NL}</xsl:text>
+                                    <xsl:choose>
+                                        <xsl:when test="starts-with($val,'&lt;')">
+                                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{{$val}}}{$NL}</xsl:text>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:text expand-text="yes">{$TAB}VALUES ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} {{&lt;{$val}&gt;}}{$NL}</xsl:text>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <xsl:text expand-text="yes">{$TAB}OPTIONAL {{ ?{$root/entity/@name} &lt;http://example.globalise.nl/temp/{$root/entity/@input}/{replace((current-group()//field)[1]/@name,'[^a-zA-Z0-9]','_')}> ?var_{replace(current-grouping-key(),'[^a-zA-Z0-9]','_')} . }}{$NL}</xsl:text>
