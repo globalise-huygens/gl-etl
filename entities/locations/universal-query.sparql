@@ -66,14 +66,14 @@ BIND (URI(replace(STR(?loc),"http://example.globalise.nl/temp/location/(.*)","ht
   OPTIONAL { # location type
     ?_lt <http://example.globalise.nl/temp/location2type/location> ?loc;
          <http://example.globalise.nl/temp/location2type/location2type> ?lt.
-        OPTIONAL { ?lt <http://example.globalise.nl/temp/location2type/comments> ?type_comments. }
+        OPTIONAL { ?_lt <http://example.globalise.nl/temp/location2type/comments> ?type_comments. }
          #er kan ook een timespan zijn
     OPTIONAL { # location type source
-      ?lt <http://example.globalise.nl/temp/locationtype2source/source> ?_lts.
-      
-	  ?_lts <http://example.globalise.nl/temp/source/page_no> ?type_source_page_no;
-    	    <http://example.globalise.nl/temp/source/zotero_url> ?type_source_zotero_url.
-      OPTIONAL { ?_source <http://example.globalise.nl/temp/source/comments> ?type_source_comments. }      
+      ?_lts <http://example.globalise.nl/temp/locationtype2source/location2type> ?_lt;
+            <http://example.globalise.nl/temp/locationtype2source/source> ?_ltss.      
+	  ?_ltss <http://example.globalise.nl/temp/source/page_no> ?type_source_page_no;
+    	     <http://example.globalise.nl/temp/source/zotero_url> ?type_source_zotero_url.
+      OPTIONAL { ?_ltss <http://example.globalise.nl/temp/source/comments> ?type_source_comments. }      
     } # location type source
   } # location type
   BIND (COALESCE(?lt,<http://example.com/place>) AS ?location_type)
