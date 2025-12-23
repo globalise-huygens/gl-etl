@@ -4,7 +4,7 @@
     "https://objectstore.surf.nl/87435b768620494e8e911c83d1997f24:globalise-data/contexts/aaao.json",
     "https://objectstore.surf.nl/87435b768620494e8e911c83d1997f24:globalise-data/contexts/pwro.json",
     "https://objectstore.surf.nl/87435b768620494e8e911c83d1997f24:globalise-data/contexts/glob.json",
-    "https://www.w3.org/ns/anno.jsonld",
+    "http://localhost:8000/proxy?url=https://www.w3.org/ns/anno.jsonld",
     "https://objectstore.surf.nl/87435b768620494e8e911c83d1997f24:globalise-data/contexts/crmdig.json"
   ]
 }
