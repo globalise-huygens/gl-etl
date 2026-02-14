@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lookups>
-    <lookup id="glob_id" uri="https://digitaalerfgoed.poolparty.biz/globalise/f9a7067e-0813-4d5e-8ec5-f4febc254e9a"/>
-    <lookup id="amd_id" uri="https://digitaalerfgoed.poolparty.biz/globalise/2991666b-95b4-4539-ac4d-7fea9848093f"/>
-    <lookup id="wgh_id" uri="https://digitaalerfgoed.poolparty.biz/globalise/2e7bd944-d638-4512-96fd-08be477ba4e8"/>
+    <lookup id="glob_id" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:f9a7067e-0813-4d5e-8ec5-f4febc254e9a"/>
+    <lookup id="amd_id" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:2991666b-95b4-4539-ac4d-7fea9848093f"/>
+    <lookup id="wgh_id" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:2e7bd944-d638-4512-96fd-08be477ba4e8"/>
     <lookup id="country" uri="http://www.w3.org/2004/02/skos/core#related"/>
-    <lookup id="esta_id" uri="https://digitaalerfgoed.poolparty.biz/globalise/92331776-f9e3-4984-9473-7dcac8e40c18"/>
-    <lookup id="certainty" uri="https://digitaalerfgoed.poolparty.biz/globalise/efc9b805-9947-48c3-905b-98a40596937a"/>
-    <lookup field="coord_certainty" value="certain" uri="https://digitaalerfgoed.poolparty.biz/globalise/2679d175-6a27-42ed-a5f5-441fcf671152"/>
-    <lookup field="coord_certainty" value="uncertain" uri="https://digitaalerfgoed.poolparty.biz/globalise/f58589a3-fe6a-4afc-96b8-862526e7d27d"/>
+    <lookup id="esta_id" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:92331776-f9e3-4984-9473-7dcac8e40c18"/>
+    <lookup id="certainty" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:efc9b805-9947-48c3-905b-98a40596937a"/>
+    <lookup field="coord_certainty" value="certain" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:2679d175-6a27-42ed-a5f5-441fcf671152"/>
+    <lookup field="coord_certainty" value="uncertain" uri="https://data.globalise.huygens.knaw.nl/hdl:20.500.14722/thesaurus:f58589a3-fe6a-4afc-96b8-862526e7d27d"/>
     <lookup field="label_type"      value="PREF" uri="http://vocab.getty.edu/aat/300404670"/>
     <lookup field="label_type"      value="ALT" uri="http://vocab.getty.edu/aat/300264273"/>
     <lookup field="label_type"      value="HIDDEN" uri="http://vocab.getty.edu/aat/300449151"/>
